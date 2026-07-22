@@ -1,0 +1,66 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+    transition:0.4s;
+    
+}
+
+.container{
+    text-align:center;
+}
+
+h1{
+    margin-bottom:15px;
+    
+}
+
+p{
+    margin-bottom:20px;
+    
+}
+
+button{
+    padding:10px 18px;
+    margin:5px;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+    font-size:16px;
+}
+
+/* Light Theme */
+
+.light{
+    background:#ffffff;
+    color:#222;
+}
+
+/* Dark Theme */
+
+.dark{
+    background:#1f1f1f;
+    color:white;
+}
+
+/* Blue Theme */
+
+.blue{
+    background:#1976d2;
+    color:white;
+}
+
+/* Green Theme */
+
+.green{
+    background:#2e7d32;
+    color:white;
+}

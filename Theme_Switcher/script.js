@@ -122,3 +122,15 @@ if (savedTheme) {
 else{
     changeTheme('light')
 }
+
+
+// const buttons = document.querySelectorAll('.buttons')
+
+// const colors = ['white', 'grey', 'lightblue', 'lightgreen']
+
+// buttons.forEach((btn) => {
+//     btn.addEventListener('click', (e) => {
+//         document.body.classList.add(e.target.id)
+//     })
+
+// })

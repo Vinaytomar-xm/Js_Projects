@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dark/Light Mode</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+           
+        }
+
+        body {
+            background: white;
+            color: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            transition: .3s;
+        }
+
+        .container {
+            text-align: center;
+            
+        }
+
+        h1 {
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
+
+        p {
+            font-size: 18px;
+          
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 18px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        /* Dark Theme */
+
+        body.dark {
+            background: #222;
+            color: white;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>Dark/Light Mode</h1>
+        <p>Click the button to change theme.</p>
+
+        <button id="themeBtn">
+            Dark Mode
+        </button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

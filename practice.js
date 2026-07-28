@@ -13,6 +13,8 @@
 // const countName = name.indexOf('a')
 // console.log(countName)
 
+
+
 // const PromiseOne = new Promise(function (resolve, reject) {
 //     resolve('resolved')
 // })
@@ -133,13 +135,13 @@
 // console.log(PrintMe.login());
 
 
-// class username {
+// class user {
 //     constructor(username){
 //         this.username = username
 //     }
 // }
 
-// class student extends username{
+// class student extends user{
 //     constructor(username, email){
 //         super(username)
 //         this.email = email
@@ -156,16 +158,75 @@
 
 // behind the scene of super 
 
-function user(username){
-    this.username = username
-}
+// function user(username){
+//     this.username = username
+// }
 
-function student(username,email, company){
-    user.call(this, username)
-    this.email = email
-    this.company = company
-}
+// function student(username,email, company){
+//     user.call(this, username)
+//     this.email = email
+//     this.company = company
+// }
 
-const info = new student("Vinay", "Vinay@amazon.com", "Amazon")
+// const info = new student("Vinay", "Vinay@amazon.com", "Amazon")
 
-console.log(info);
+// console.log(info);
+
+
+// getter/setter through class
+
+// class user {
+//     constructor(username, email, password) {
+//         this.username = username
+//         this.email = email
+//         this.password = password
+//     }
+
+//     get username(){
+//         return `hey how are you ${this._username.toUpperCase()}`
+//     }
+//     set username(value){
+//         this._username = value
+//     }
+// }
+
+// const deatials = new user("Vinay")
+// console.log(deatials.username);
+
+
+// getter/setter through function mean behind the scene
+
+// function user(username, email, password) {
+//     this._username = username
+//     this._email = email
+//     this._password = password
+
+//     Object.defineProperty(this, 'username',{
+//         get: function(){
+//             return ` hey nice to meet you ${this._username.toUpperCase()}`
+//         },
+//         set: function(value){
+//             this._username = value
+//         }
+//     })
+// }
+// const detail = new user("Vinay")
+// console.log(detail.username);
+
+
+// getter/setter htrough Objects rarely seenn it 
+
+// const user = {
+//     _username : "Vinay",
+//     _email : "Vinay@google.com",
+
+//     get username(){
+//         return `hello ${this._username.toUpperCase()}`
+//     },
+//     set username(value){
+//         this._username = value
+//     }
+// }
+
+// const details = Object.create(user)
+// console.log(details.username);

@@ -230,3 +230,7 @@
 
 // const details = Object.create(user)
 // console.log(details.username);
+
+
+// closures 
+

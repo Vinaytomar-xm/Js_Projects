@@ -3,6 +3,8 @@
 // console.log(rev_no)
 // // convert string to number
 
+const { log } = require("node:console");
+
 // const num = Number(rev_no)
 // console.log(num)
 
@@ -230,7 +232,3 @@
 
 // const details = Object.create(user)
 // console.log(details.username);
-
-
-// closures 
-

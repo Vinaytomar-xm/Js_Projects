@@ -3,8 +3,6 @@
 // console.log(rev_no)
 // // convert string to number
 
-const { log } = require("node:console");
-
 // const num = Number(rev_no)
 // console.log(num)
 
@@ -232,3 +230,55 @@ const { log } = require("node:console");
 
 // const details = Object.create(user)
 // console.log(details.username);
+
+
+// shawlow copy and deep copy
+
+// const user = {
+//     name: "Vinay",
+//     age: 19
+// }
+
+// const me = user
+// me.name = "tomar"
+// console.log(user);
+// console.log(me);
+
+
+// const user = {
+//     name: "Vinay",
+//     age: 19
+// }
+
+// // const me = {...user}
+// const me = Object.assign({}, user)
+// me.name = "tomar"
+// console.log(user);
+// console.log(me);
+
+
+//deep copy
+
+// const _ = require('lodash')
+// const user = {
+//     name: "Vinay",
+//     age: 19,
+//     address: {
+//         city: "indore",
+//         state: "MP"
+//     },
+//     getdata: function(){
+//         console.log(`hey ${this.name} your city is ${this.address.city}`);
+//     }
+// }
+
+// const me = JSON.parse(JSON.stringify(user))
+// me.address.city = "Bhopal"
+// me.name = "tomar"
+
+// const me = _.cloneDeep(user)
+// me.address.city = "Bhopal"
+// me.name = "tomar"
+
+// console.log(user);
+// console.log(me);   //deep copy me function kam nhi krte h or date bhii isko coreect krne k liye hme loadash libraray ka use krna pdta h

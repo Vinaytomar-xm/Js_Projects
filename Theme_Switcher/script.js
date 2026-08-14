@@ -134,3 +134,19 @@ else{
 //     })
 
 // })
+
+
+//   const btn = document.getElementById("dark")
+//     const h1 = document.querySelector("h1")
+
+//     btn.addEventListener('click', (e)=>{
+//        if (btn.textContent === "dark mode") {
+//         document.body.style.backgroundColor = "black"
+//         btn.textContent = "light mode"
+//         h1.style.color = "white"
+//        } else {
+//         document.body.style.backgroundColor = 'white'
+//         btn.textContent = "dark mode"
+//         h1.style.color = "black"
+//        }
+//     })

@@ -282,3 +282,18 @@
 
 // console.log(user);
 // console.log(me);   //deep copy me function kam nhi krte h or date bhii isko coreect krne k liye hme loadash libraray ka use krna pdta h
+
+// const user = {
+//     name : "vinay",
+
+//     getname(){
+//         return this.name;
+        
+//     }
+// }
+
+// const  getname  = user.getname.bind(user)
+
+// console.log(user.getname());
+// console.log(getname());
+

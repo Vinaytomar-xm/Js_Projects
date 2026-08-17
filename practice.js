@@ -232,7 +232,7 @@
 // console.log(details.username);
 
 
-// shawlow copy and deep copy
+// shawlow copy 
 
 // const user = {
 //     name: "Vinay",
@@ -267,7 +267,7 @@
 //         city: "indore",
 //         state: "MP"
 //     },
-//     getdata: function(){
+//     getdata(){
 //         console.log(`hey ${this.name} your city is ${this.address.city}`);
 //     }
 // }

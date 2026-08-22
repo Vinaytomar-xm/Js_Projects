@@ -296,4 +296,3 @@
 
 // console.log(user.getname());
 // console.log(getname());
-

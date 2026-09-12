@@ -15,6 +15,6 @@ mongodbConnected();
 app.use(express.json())
 app.use(express.urlencoded({extended:true}))
 
-app.use("/api/user", userRouter)
+app.use("/api/v1/auth", userRouter)
 
 app.listen(Port, ()=>(console.log(`server is running on ${Port}`)));

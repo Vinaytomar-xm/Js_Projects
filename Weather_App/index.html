@@ -4,156 +4,438 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Weather App</title>
+
+    <title>Climate Mausam</title>
 
     <style>
+        :root {
+            --bg: #f4f7fb;
+            --card: #ffffff;
+            --text: #111827;
+            --muted: #6b7280;
+            --border: #e5e7eb;
+            --input: #ffffff;
+            --primary: #2563eb;
+            --primary-hover: #1d4ed8;
+            --navbar: #ffffff;
+            --shadow: rgba(0, 0, 0, 0.08);
+        }
+
+        body.dark {
+            --bg: #0f172a;
+            --card: #1e293b;
+            --text: #f8fafc;
+            --muted: #cbd5e1;
+            --border: #334155;
+            --input: #0f172a;
+            --primary: #3b82f6;
+            --primary-hover: #2563eb;
+            --navbar: #1e293b;
+            --shadow: rgba(0, 0, 0, 0.3);
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: Arial, Helvetica, sans-serif;
         }
 
         body {
-            height: 100vh;
+            min-height: 100vh;
+            font-family: Arial, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            transition: background 0.3s ease, color 0.3s ease;
+
             display: flex;
-            justify-content: center;
+            flex-direction: column;
+            margin-top: 80px;
+        }
+
+        /* Navbar */
+
+        .navbar {
+            width: 70%;
+            margin-left: 15%;
+            margin-top: 20px;
+            border-radius: 100px;
+            position: fixed;
+            top: 0;
+            background: var(--navbar);
+            border-bottom: 1px solid var(--border);
+            box-shadow: 0 2px 10px var(--shadow);
+
+            display: flex;
+            justify-content: space-between;
             align-items: center;
-            background: #414141;
+
+            padding: 16px 7%;
+            transition: background 0.3s ease;
         }
 
-        .container {
-            width: 380px;
-            background: #bab0b0;
-            padding: 25px;
-            border-radius: 15px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, .2);
+        .nav-brand {
+            font-size: 22px;
+            font-weight: 700;
         }
 
-        .container h1 {
+        #themeBtn {
+            width: 42px;
+            height: 42px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border: 1px solid var(--border);
+            border-radius: 50%;
+
+            background: var(--card);
+            color: var(--text);
+
+            cursor: pointer;
+
+            transition: all 0.25s ease;
+        }
+
+        #themeBtn:hover {
+            border-color: aqua;
+        }
+
+        #themeBtn svg {
+            width: 20px;
+            height: 20px;
+            transition: transform 0.5s ease;
+        }
+
+        #themeBtn:hover svg {
+            transform: rotate(360deg);
+        }
+
+        /* Default = Light Mode */
+        .sun-icon {
+            display: none;
+        }
+
+        .moon-icon {
+            display: block;
+        }
+
+        /* Dark Mode */
+        body.dark .moon-icon {
+            display: none;
+        }
+
+        body.dark .sun-icon {
+            display: block;
+        }
+
+        /* Main */
+
+        main {
+            width: 100%;
+            max-width: 700px;
+            margin: 50px auto;
+            padding: 0 20px;
+
+            flex: 1;
+        }
+
+        .hero {
             text-align: center;
-            margin-bottom: 20px;
+            margin-bottom: 30px;
         }
+
+        .hero h1 {
+            font-size: 36px;
+            margin-bottom: 8px;
+        }
+
+        .hero p {
+            color: var(--muted);
+            font-size: 16px;
+        }
+
+        /* Search */
 
         .search-box {
             display: flex;
             gap: 10px;
+            margin-bottom: 15px;
         }
 
-        .search-box input {
+        #city {
             flex: 1;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 8px;
+            padding: 14px 16px;
+
+            border: 1px solid var(--border);
+            border-radius: 10px;
+
+            background: var(--input);
+            color: var(--text);
+
             font-size: 16px;
             outline: none;
         }
 
-        .search-box button {
-            padding: 10px 15px;
+        #city:focus {
+            border-color: var(--primary);
+        }
+
+        #searchBtn {
+            padding: 14px 22px;
+
             border: none;
-            background: #2196f3;
-            color: white;
-            border-radius: 8px;
-            cursor: pointer;
-        }
-
-        .search-box button:hover {
-            background: #1976d2;
-        }
-
-        .weather {
-            text-align: center;
-            margin-top: 30px;
-        }
-
-        .weather img {
-            width: 120px;
-        }
-
-        .weather h2 {
-            margin: 10px 0;
-        }
-
-        .weather h3 {
-            margin-bottom: 20px;
-        }
-
-        .info {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 20px;
-        }
-
-        .card {
-            width: 45%;
-            background: #f5f5f5;
-            padding: 15px;
             border-radius: 10px;
+
+            background: var(--primary);
+            color: white;
+
+            font-size: 16px;
+            font-weight: 600;
+
+            cursor: pointer;
+            transition: 0.2s ease;
         }
 
-        .card h4 {
-            margin-bottom: 10px;
+        #searchBtn:hover {
+            background: var(--primary-hover);
+        }
+
+        #searchBtn:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+        }
+
+        #status {
+            min-height: 24px;
+            margin: 8px 0 20px;
+
+            color: var(--muted);
+            text-align: center;
+        }
+
+        /* Weather Card */
+
+        .weather-card {
+            background: var(--card);
+
+            border: 1px solid var(--border);
+            border-radius: 18px;
+
+            padding: 30px;
+
+            box-shadow: 0 10px 30px var(--shadow);
+
+            text-align: center;
+
+            transition: background 0.3s ease;
+        }
+
+        #icon {
+            width: 90px;
+            height: 90px;
+            margin-bottom: 5px;
+        }
+
+        #temp {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        #cityName {
+            font-size: 22px;
+            margin-bottom: 8px;
+        }
+
+        #condition {
+            color: var(--muted);
+            font-size: 17px;
+            margin-bottom: 25px;
+        }
+
+        .weather-details {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+
+        .detail {
+            padding: 18px;
+
+            border: 1px solid var(--border);
+            border-radius: 12px;
+
+            background: var(--bg);
+        }
+
+        .detail span {
+            display: block;
+            color: var(--muted);
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+
+        .detail strong {
+            font-size: 18px;
+        }
+
+        /* Footer */
+
+        .footer {
+            text-align: center;
+            padding: 20px;
+            font-size: 14px;
+            font-weight: 600;
+
+            color: var(--muted);
+            border-top: 1px solid var(--border);
+        }
+
+        /* Mobile */
+
+        @media (max-width: 600px) {
+            .navbar {
+                padding: 14px 20px;
+                font-weight: 100;
+                width: 85%;
+                margin-left: 30px;
+                
+            }
+
+            .nav-brand {
+                font-size: 19px;
+            }
+
+            main {
+                margin: 35px auto;
+            }
+
+            .hero h1 {
+                font-size: 30px;
+            }
+
+            .search-box {
+                flex-direction: column;
+            }
+
+            #searchBtn {
+                width: 100%;
+            }
+
+            .weather-card {
+                padding: 22px;
+            }
+
+            #temp {
+                font-size: 42px;
+            }
+
+            .weather-details {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        #year {
+            font-weight: 600;
         }
     </style>
-
 </head>
 
 <body>
 
-    <div class="container">
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="nav-brand">
+            Climate Mausam
+        </div>
 
-        <h1>Weather App</h1>
+        <button id="themeBtn" aria-label="Switch to dark mode" title="Switch to dark mode">
+            <!-- Moon -->
+            <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3
+                 7 7 0 0 0 21 12.79Z" />
+            </svg>
 
+            <!-- Sun -->
+            <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="4" />
+
+                <path d="M12 2v2" />
+                <path d="M12 20v2" />
+                <path d="m4.93 4.93 1.41 1.41" />
+                <path d="m17.66 17.66 1.41 1.41" />
+                <path d="M2 12h2" />
+                <path d="M20 12h2" />
+                <path d="m6.34 17.66-1.41 1.41" />
+                <path d="m19.07 4.93-1.41 1.41" />
+            </svg>
+        </button>
+    </nav>
+
+
+    <!-- Main -->
+    <main>
+
+        <section class="hero">
+            <h1>Weather Updates</h1>
+            <p>Search any city and get the latest weather information.</p>
+        </section>
+
+
+        <!-- Search -->
         <div class="search-box">
-            <input type="text" id="city" placeholder="Enter City Name">
+            <input type="text" id="city" placeholder="Enter city name..." autocomplete="off">
 
             <button id="searchBtn">
                 Search
             </button>
         </div>
 
-        <div id="loader" style="display: none;">
-            <h2>Loading...</h2>
-        </div>
 
-        <div id="weather">
-            <!-- Yahin temp, city, humidity, wind, etc. hain -->
-        </div>
+        <p id="status"></p>
 
-        <div class="weather">
 
-            <img id="icon" src="https://openweathermap.org/img/wn/01d@2x.png" alt="Weather Icon">
+        <!-- Weather Card -->
+        <section class="weather-card">
 
-            <h2 id="temp">-- °C</h2>
+            <img id="icon" src="" alt="Weather condition" hidden>
 
-            <h3 id="cityName">
-                City Name
-            </h3>
+            <h2 id="temp">--°C</h2>
 
-            <p id="condition">
-                Weather Condition
-            </p>
+            <h3 id="cityName">Search for a city</h3>
 
-            <div class="info">
-                <div class="card">
-                    <h4>Humidity</h4>
-                    <p id="humidity">
-                        -- %
-                    </p>
+            <p id="condition">Weather information will appear here</p>
+
+
+            <div class="weather-details">
+
+                <div class="detail">
+                    <span>💧 Humidity</span>
+                    <strong id="humidity">--</strong>
                 </div>
 
-                <div class="card">
-                    <h4>Wind</h4>
-                    <p id="wind">
-                        -- km/h
-                    </p>
+                <div class="detail">
+                    <span>💨 Wind</span>
+                    <strong id="wind">--</strong>
                 </div>
+
             </div>
 
-        </div>
+        </section>
 
-    </div>
+    </main>
+
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>
+            © <span id="year"></span> Made by Vinay Singh Tomar
+        </p>
+    </footer>
+
 
     <script src="script.js"></script>
 

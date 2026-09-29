@@ -1,16 +1,17 @@
-import User from "../models/user.js"
+import user from "../models/user.js";
+import { generatetoken, sendCookies } from "../utils/generateToken.js";
 
-const createUser = async (req, res) => {
+const createUser = asyncHandler(async (req, res) => {
     const { username, email, password } = req.body;
 
     if (!username || !email || !password) {
         return res.status(400).json({
             success: false,
-            message: "Please log in first.."
+            message: "Please provide all required fields"
         });
     }
 
-    const exist = await User.findOne({ email });
+    const exist = await user.findOne({ email });
 
     if (exist) {
         return res.status(409).json({
@@ -19,7 +20,7 @@ const createUser = async (req, res) => {
         });
     }
 
-    const newUser = await User.create({
+    const newUser = await user.create({
         username,
         email,
         password
@@ -35,10 +36,10 @@ const createUser = async (req, res) => {
                 password: newUser.password
             }
         })
-};
+});
 
-const getMe = async (req, res) => {
-    const user = await User.findOne({ _id: req.params.id })
+const getMe = asyncHandler(async (req, res) => {
+    const user = await user.findOne({ _id: req.params.id })
     if (!user) {
        return res.status(404).json({
             success: false,
@@ -46,6 +47,6 @@ const getMe = async (req, res) => {
         });
     }
     res.status(200).json({ success: true, data: user });
-}
+})
 
 export { createUser, getMe };

@@ -1,6 +1,5 @@
 
 import user from "../models/user.js";
-import bcrypt from "bcryptjs";
 import { asyncHandler } from "../utils/asyncHandler.js";
 import { generatetoken, sendCookies } from "../utils/generateToken.js";
 

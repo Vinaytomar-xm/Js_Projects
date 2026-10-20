@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Copy to Clipboard</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 100px;
+        }
+
+        input,
+        button {
+            padding: 10px;
+            margin: 5px;
+        }
+
+        button {
+            background-color: purple;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #message {
+            color: green;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>Copy to Clipboard</h2>
+
+    <input type="text" id="myText" placeholder="Enter text to copy...">
+
+    <button id="btn">Copy Text</button>
+    <!-- <button onClick = copyText()>Copy Text</button> -->
+
+    <p id="message"></p>
+
+    <script>
+        // async function copyText() {
+        //     const text = document.getElementById("myText").value;
+        //     const message = document.getElementById("message");
+
+        //     if(!text) {
+        //         message.style.color = "red";
+        //         message.textContent = "Please enter some text to copy.";
+        //         return;
+
+        //     }
+
+        //     try {
+        //         await navigator.clipboard.writeText(text);
+        //         message.textContent = "Text copied successfully!";
+        //     } catch (error) {
+        //         message.textContent = "Copy failed. Please try again.";
+        //     }
+        // }
+        // const button = document.getElementById("btn");
+        // const txt = document.getElementById("myText");
+        // const message = document.getElementById("message");
+
+        button.addEventListener("click", async () => {
+            if (!txt.value) {
+                message.style.color = "red";
+                message.textContent = "Please enter some text to copy.";
+                return;
+
+            }
+
+            try {
+                await navigator.clipboard.writeText(txt.value);
+                message.textContent = "Text copied";
+            } catch (error) {
+                message.textContent = "Copy failed";
+            }
+        })
+
+    </script>
+
+</body>
+
+</html>
